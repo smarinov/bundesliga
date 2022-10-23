@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main-container">
+        <h1 class="title">Upcoming matches
+            for {{ tomorrow_date.year }}/{{ tomorrow_date.month }}/{{ tomorrow_date.day }}</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Home</th>
+                <th scope="col">Away</th>
+                <th scope="col">Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for match in next_day_matches %}
+                <tr>
+                    <th scope="row">{{ match.MatchID }}</th>
+                    <td><a href="{% url 'team details' match.Team1.TeamName %}">{{ match.Team1.TeamName }}</a></td>
+                    <td><a href="{% url 'team details' match.Team2.TeamName %}">{{ match.Team2.TeamName }}</a></td>
+                    <td>{{ match.MatchDateTime }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main-container">
+        <h1 class="title">Leaderboard ({{ current_year }})</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Team</th>
+                <th scope="col">Wins</th>
+                <th scope="col">Losses</th>
+                <th scope="col">Draws</th>
+                <th scope="col">Winning Percentage</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for team_name, data in all_teams.items %}
+                <tr>
+                    <th scope="row"><a href="{% url 'team details' team_name %}">{{ team_name }}</a></th>
+                    <td>{{ data.wins }}</td>
+                    <td>{{ data.losses }}</td>
+                    <td>{{ data.draws }}</td>
+                    <td>{{ data.winning_percentage }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main-container">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ current_team_icon }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ team_name }}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Wins: {{ current_team_ratio.wins }}</li>
+                <li class="list-group-item">Losses: {{ current_team_ratio.losses }}</li>
+                <li class="list-group-item">Draws: {{ current_team_ratio.draws }}</li>
+            </ul>
+        </div>
+
+        <h1 class="title">Current Season Matches ({{ team_name }})</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Home</th>
+                <th scope="col">Away</th>
+                <th scope="col">Date</th>
+                <th scope="col">Half Time</th>
+                <th scope="col">Full Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for match in all_matches %}
+                <tr>
+                    <th scope="row">{{ match.match_id }}</th>
+                    <td><a href="{% url 'team details' match.home_team %}">{{ match.home_team }}</a></td>
+                    <td><a href="{% url 'team details' match.away_team %}">{{ match.away_team }}</a></td>
+                    <td>{{ match.match_date_time }}</td>
+                    <td>{{ match.first_half_result }}</td>
+                    <td>{{ match.second_half_result }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

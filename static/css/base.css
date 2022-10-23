@@ -1,0 +1,40 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.main-container {
+    padding: 100px;
+    height: 100%;
+
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.card {
+    margin: auto;
+    width: 50%;
+    border: 3px solid;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.landing-div {
+    background-image: url("https://mcdn.wallpapersafari.com/medium/12/88/biQ3Lo.jpg");
+    height: 100%;
+    text-align: center;
+    horiz-align: center;
+    padding-top: 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.home-title {
+    color: #DC052D;
+}
