@@ -65,7 +65,10 @@ class RequestHandler:
             winning_percentage = f"{((all_teams[team]['wins'] + (all_teams[team]['draws'] * 0.5)) / sum([all_teams[team]['wins'], all_teams[team]['draws'], all_teams[team]['losses']])) * 100:.2f}%"
             all_teams[team]['winning_percentage'] = winning_percentage
 
-        return all_teams
+        sorted_all_teams_by_winning_percentage = sorted(all_teams.items(), key=lambda x: x[1]['winning_percentage'],
+                                                        reverse=True)
+
+        return dict(sorted_all_teams_by_winning_percentage)
 
     @staticmethod
     def check_if_team_exists(name):
